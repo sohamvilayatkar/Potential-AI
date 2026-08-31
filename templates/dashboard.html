@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <div class="page-header">
+        <h1>📊 Potential AI - Analytics & Performance Dashboard</h1>
+        <p>Real-time conversational intelligence, intent distribution, model confidence, and official knowledge status.</p>
+    </div>
+
+    <!-- Stat Widgets Grid -->
+    <div class="grid-4">
+        <div class="stat-widget">
+            <div class="stat-label">Total Inquiries</div>
+            <div class="stat-value" id="statTotal">{{ summary.total_queries }}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Logged in SQLite</div>
+        </div>
+
+        <div class="stat-widget">
+            <div class="stat-label">Success Rate</div>
+            <div class="stat-value" id="statSuccess" style="color: var(--accent-emerald);">{{ summary.success_rate }}%</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">{{ summary.successful_queries }} answered / {{ summary.fallback_queries }} fallbacks</div>
+        </div>
+
+        <div class="stat-widget">
+            <div class="stat-label">Avg. Confidence</div>
+            <div class="stat-value" id="statConf" style="color: var(--accent-cyan);">{{ summary.average_confidence }}%</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">TF-IDF + ML Softmax</div>
+        </div>
+
+        <div class="stat-widget">
+            <div class="stat-label">Top Intent</div>
+            <div class="stat-value" id="statTop" style="font-size: 1.3rem; color: #a78bfa; margin: 0.8rem 0;">{{ summary.top_intent }}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Most frequent user topic</div>
+        </div>
+    </div>
+
+    <!-- Knowledge Base & Matplotlib Analytics -->
+    <div class="grid-2">
+        <!-- Matplotlib Chart -->
+        <div class="card">
+            <div class="card-title">📈 Topic Distribution (Matplotlib Analytics)</div>
+            <div style="text-align: center; margin-top: 0.5rem;">
+                <img id="dashboardChart" src="data:image/png;base64,{{ chart_base64 }}" alt="Topic Distribution Chart" style="max-width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--border-color);" />
+            </div>
+        </div>
+
+        <!-- Knowledge Base Status Card -->
+        <div class="card">
+            <div class="card-title">🛡️ Official Knowledge Base Status</div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
+                <div style="background-color: var(--bg-secondary); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">KNOWLEDGE BASE LAST UPDATED</div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-emerald);">{{ last_update }}</div>
+                </div>
+
+                <div style="background-color: var(--bg-secondary); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">AUTHORITATIVE OFFICIAL SOURCES</div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-accent);">{{ sources_count }} Official Portals & Portals Documents</div>
+                </div>
+
+                <div style="background-color: var(--bg-secondary); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">DATA REFRESH WORKFLOW</div>
+                    <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+                        <code>python scripts/scrape_website.py</code> ➔ <code>python scripts/process_data.py</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Queries Table -->
+    <div class="card">
+        <div class="card-title">🕒 Recent Inquiries Log (SQLite Database)</div>
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Timestamp</th>
+                        <th>User Query</th>
+                        <th>Predicted Intent</th>
+                        <th>Confidence</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="recentQueriesTbody">
+                    {% for q in summary.recent_queries %}
+                    <tr>
+                        <td>#{{ q.id }}</td>
+                        <td style="font-size: 0.8rem; color: var(--text-muted);">{{ q.timestamp }}</td>
+                        <td><strong>{{ q.user_message }}</strong></td>
+                        <td><span class="college-badge" style="display: inline-block;">{{ q.intent }}</span></td>
+                        <td>{{ (q.confidence * 100)|round(1) }}%</td>
+                        <td>
+                            {% if q.response_status == 'success' %}
+                            <span style="color: var(--accent-emerald); font-weight: bold;">● Answered</span>
+                            {% else %}
+                            <span style="color: var(--accent-rose); font-weight: bold;">● Fallback</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

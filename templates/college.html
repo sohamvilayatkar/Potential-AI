@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <div class="page-header">
+        <h1>🏛️ PRPCEM College Information Explorer</h1>
+        <p>Verified, official institutional data extracted from the authoritative PRPCEM portals.</p>
+    </div>
+
+    <!-- Quick Navigation Tabs -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchCollegeTab(event, 'tab-about')">Overview & Leadership</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-depts')">Departments & HODs</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-programs')">Degree Programs</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-admissions')">Admissions & Documents</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-fees')">Fees & Scholarships</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-facilities')">Campus Facilities</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-academics')">Academics & Examination</button>
+        <button class="tab-btn" onclick="switchCollegeTab(event, 'tab-contact')">Contact & Location</button>
+    </div>
+
+    <!-- TAB 1: Overview & Leadership -->
+    <div id="tab-about" class="tab-pane active">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">📜 Institutional Profile</div>
+                <p><strong>Name:</strong> {{ data.college.name }}</p>
+                <p><strong>Trust:</strong> {{ data.college.trust }}</p>
+                <p><strong>Established:</strong> {{ data.college.established_year }}</p>
+                <p><strong>Status:</strong> <span style="color: var(--accent-cyan); font-weight: 600;">{{ data.college.autonomy_status }}</span></p>
+                <p><strong>Accreditation:</strong> <span style="color: var(--accent-emerald); font-weight: 600;">{{ data.college.accreditation }}</span></p>
+                <p><strong>DTE Code:</strong> {{ data.college.dte_code }}</p>
+                <p><strong>Affiliation:</strong> {{ data.college.affiliation }}</p>
+                <p><strong>Approvals:</strong> {{ data.college.approvals }}</p>
+                <p><strong>Timings:</strong> {{ data.college.college_timings }}</p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">👥 Key Leadership</div>
+                <p><strong>Founder & Chairman:</strong><br>{{ data.college.founder_chairman }}</p>
+                <p style="margin-top: 0.5rem;"><strong>Vice-Chairman:</strong><br>{{ data.college.vice_chairman }}</p>
+                <p style="margin-top: 0.5rem;"><strong>Principal:</strong><br>{{ data.college.principal }}</p>
+                <p style="margin-top: 0.5rem;"><strong>Dean (Academics):</strong><br>{{ data.college.dean_academics }}</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-title">🎯 Vision, Mission & Quality Policy</div>
+            <h4 style="color: var(--text-accent); margin-top: 0.5rem;">Vision:</h4>
+            <p>{{ data.college.vision }}</p>
+            <h4 style="color: var(--text-accent); margin-top: 0.75rem;">Mission:</h4>
+            <p style="white-space: pre-line;">{{ data.college.mission }}</p>
+            <h4 style="color: var(--text-accent); margin-top: 0.75rem;">Quality Policy:</h4>
+            <p>{{ data.college.quality_policy }}</p>
+        </div>
+    </div>
+
+    <!-- TAB 2: Departments & HODs -->
+    <div id="tab-depts" class="tab-pane">
+        <div class="grid-2">
+            {% for dept in data.departments %}
+            <div class="card">
+                <div class="card-title">⚙️ {{ dept.name }} ({{ dept.short_name }})</div>
+                <p><strong>Head of Department (HOD):</strong> <span style="color: var(--text-accent); font-weight: 600;">{{ dept.hod }}</span></p>
+                <p><strong>Seat Intake:</strong> {% if dept.intake_btech %}B.Tech: {{ dept.intake_btech }} seats{% endif %} {% if dept.intake_pg %}PG: {{ dept.intake_pg }} seats{% endif %} {% if dept.intake_mtech %}| M.Tech: {{ dept.intake_mtech }} seats{% endif %}</p>
+                <p style="margin-top: 0.4rem; color: #cbd5e1; font-size: 0.88rem;">{{ dept.description }}</p>
+                {% if dept.laboratories %}
+                <div style="margin-top: 0.6rem;">
+                    <strong>Laboratories:</strong>
+                    <ul style="margin-left: 1.25rem; font-size: 0.82rem; color: var(--text-muted);">
+                        {% for lab in dept.laboratories %}
+                        <li>{{ lab }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- TAB 3: Degree Programs -->
+    <div id="tab-programs" class="tab-pane">
+        <div class="grid-2">
+            {% for prog in data.programs %}
+            <div class="card">
+                <div class="card-title">🎓 {{ prog.degree }}</div>
+                <p><strong>Level:</strong> {{ prog.level }} | <strong>Duration:</strong> {{ prog.duration }}</p>
+                <p><strong>Total Approved Intake:</strong> {{ prog.total_intake }} seats</p>
+                <p><strong>Admission Exam / Process:</strong> {{ prog.admission_exam }}</p>
+                <div style="margin-top: 0.75rem;">
+                    <strong>Specialization Branches:</strong>
+                    <ul style="margin-left: 1.25rem; margin-top: 0.25rem; font-size: 0.88rem;">
+                        {% for b in prog.branches %}
+                        <li>{{ b }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- TAB 4: Admissions & Required Documents -->
+    <div id="tab-admissions" class="tab-pane">
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-title">📝 Centralized Admission Process (DTE Code: 1107)</div>
+            <p>{{ data.admissions.admission_process }}</p>
+            <h4 style="color: var(--text-accent); margin-top: 1rem;">Eligibility Criteria:</h4>
+            <p style="margin-top: 0.25rem; white-space: pre-line;"><strong>B.Tech Eligibility:</strong><br>{{ data.admissions.btech_eligibility }}</p>
+            <p style="margin-top: 0.5rem; white-space: pre-line;"><strong>Direct Second Year (DSE):</strong><br>{{ data.admissions.direct_second_year_eligibility }}</p>
+            <p style="margin-top: 0.5rem; white-space: pre-line;"><strong>M.Tech / MBA / MCA:</strong><br>{{ data.admissions.mba_eligibility }}</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📑 Required Document Checklist</div>
+            <ol style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.9rem;">
+                {% for doc in data.admissions.required_documents %}
+                <li>{{ doc }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+    <!-- TAB 5: Fees & Scholarships -->
+    <div id="tab-fees" class="tab-pane">
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-title">💰 Tuition Fees Structure (2025-26)</div>
+            <p>{{ data.fees.fee_structure_overview }}</p>
+            <p style="margin-top: 0.5rem;"><strong>B.Tech Interim Tuition & Development Fee:</strong> {{ data.fees.btech_interim_tuition_fee }}</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🎁 Government & Institutional Scholarships</div>
+            <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.9rem;">
+                {% for s in data.fees.scholarships %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 6: Facilities -->
+    <div id="tab-facilities" class="tab-pane">
+        <div class="grid-2">
+            {% for fac in data.facilities %}
+            <div class="card">
+                <div class="card-title">🏢 {{ fac.name }}</div>
+                <p style="color: #cbd5e1; font-size: 0.9rem;">{{ fac.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- TAB 7: Academics & Examination -->
+    <div id="tab-academics" class="tab-pane">
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-title">📚 Dean (Academics) Office & Autonomous Ordinances</div>
+            <p>{{ data.academic.dean_office }}</p>
+            <p style="margin-top: 0.5rem;"><strong>Autonomous Regulations:</strong> {{ data.academic.autonomous_ordinance }}</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://academics.prpotepatilengg.ac.in/PRPCEM_Ordinance_23-24_DraftCopy.pdf" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-block;">
+                    📄 View Autonomous Ordinance (PDF) ↗
+                </a>
+                <a href="https://academics.prpotepatilengg.ac.in/academic-calendars" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-block; margin-left: 0.5rem; background: #475569;">
+                    📅 Academic Calendars ↗
+                </a>
+                <a href="https://prpcem.dotcominfotech.in/" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-block; margin-left: 0.5rem; background: #0284c7;">
+                    ✍️ Exam Forms Portal ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📢 Latest Academic Notices</div>
+            {% for n in data.notices %}
+            <div style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);">
+                <h4 style="color: var(--text-accent);">{{ n.title }}</h4>
+                <p style="font-size: 0.88rem; color: #cbd5e1; margin-top: 0.25rem;">{{ n.summary }}</p>
+                <a href="{{ n.url }}" target="_blank" style="color: #38bdf8; font-size: 0.8rem; text-decoration: underline; margin-top: 0.25rem; display: inline-block;">View Official Notice ↗</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- TAB 8: Contact & Location -->
+    <div id="tab-contact" class="tab-pane">
+        <div class="card">
+            <div class="card-title">📞 Campus Directory & Working Hours</div>
+            <p><strong>Campus Address:</strong> {{ data.contact.address }}</p>
+            <p style="margin-top: 0.4rem;"><strong>Helpline Phone Numbers:</strong> {{ data.contact.phone_numbers|join(", ") }}</p>
+            <p style="margin-top: 0.4rem;"><strong>Admission Cell Helpline:</strong> {{ data.contact.admission_helpline }}</p>
+            <p style="margin-top: 0.4rem;"><strong>Principal Office Email:</strong> {{ data.contact.emails.principal }}</p>
+            <p style="margin-top: 0.4rem;"><strong>Dean Academics Email:</strong> {{ data.contact.emails.dean_academics }}</p>
+            <p style="margin-top: 0.4rem;"><strong>Working Hours:</strong> {{ data.contact.timings }}</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://prpotepatilengg.ac.in/" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-block;">
+                    🌐 PRPCEM Main Portal ↗
+                </a>
+                <a href="https://academics.prpotepatilengg.ac.in/" target="_blank" class="btn-primary" style="text-decoration: none; display: inline-block; margin-left: 0.5rem; background: #0284c7;">
+                    🎓 Dean Academics Portal ↗
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/college.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{
+  "last_updated": "2026-08-31T21:45:00+05:30",
+  "college_name": "P. R. Pote Patil College of Engineering & Management, Amravati",
+  "sources": [
+    {
+      "id": "src_home_main",
+      "title": "PRPCEM Official Website Homepage",
+      "url": "https://prpotepatilengg.ac.in/",
+      "domain": "prpotepatilengg.ac.in",
+      "category": "college_information",
+      "academic_year": "2025-26",
+      "description": "Primary college portal with overview, administration, affiliations, accreditations, and contacts."
+    },
+    {
+      "id": "src_about_college",
+      "title": "About PRPCEM & Governance",
+      "url": "https://prpotepatilengg.ac.in/about-college",
+      "domain": "prpotepatilengg.ac.in",
+      "category": "college_information",
+      "academic_year": "2025-26",
+      "description": "Information regarding college establishment, trust, vision, mission, and leadership."
+    },
+    {
+      "id": "src_academics_portal",
+      "title": "Office of Dean (Academics) Portal",
+      "url": "https://academics.prpotepatilengg.ac.in/",
+      "domain": "academics.prpotepatilengg.ac.in",
+      "category": "academics",
+      "academic_year": "2026-27",
+      "description": "Dean Academics official website with course schemes, syllabus, notices, and examination portals."
+    },
+    {
+      "id": "src_academic_calendars",
+      "title": "PRPCEM Academic Calendars",
+      "url": "https://academics.prpotepatilengg.ac.in/academic-calendars",
+      "domain": "academics.prpotepatilengg.ac.in",
+      "category": "academic_calendar",
+      "academic_year": "2025-26",
+      "description": "Teaching schedule, internal examinations, and semester timelines."
+    },
+    {
+      "id": "src_ordinance",
+      "title": "Autonomous Academic Regulations and Ordinances",
+      "url": "https://academics.prpotepatilengg.ac.in/PRPCEM_Ordinance_23-24_DraftCopy.pdf",
+      "domain": "academics.prpotepatilengg.ac.in",
+      "category": "autonomy",
+      "academic_year": "2025-26",
+      "description": "Official autonomous curriculum rules, grading systems, and passing criteria."
+    },
+    {
+      "id": "src_admissions",
+      "title": "PRPCEM Admissions & Eligibility",
+      "url": "https://prpotepatilengg.ac.in/admission",
+      "domain": "prpotepatilengg.ac.in",
+      "category": "admissions",
+      "academic_year": "2025-26",
+      "description": "B.Tech, M.Tech, MBA, and MCA admission criteria, eligibility norms, and document checklist."
+    },
+    {
+      "id": "src_exam_portal",
+      "title": "PRPCEM Online Examination Forms Portal",
+      "url": "https://prpcem.dotcominfotech.in/",
+      "domain": "prpcem.dotcominfotech.in",
+      "category": "examination",
+      "academic_year": "2025-26",
+      "description": "Student examination registration, hall tickets, and backlog forms."
+    },
+    {
+      "id": "src_contact_us",
+      "title": "Official PRPCEM Contact & Location",
+      "url": "https://prpotepatilengg.ac.in/contact-us",
+      "domain": "prpotepatilengg.ac.in",
+      "category": "contact",
+      "academic_year": "2025-26",
+      "description": "Campus address, helpline numbers, email addresses, and location map."
+    }
+  ]
+}

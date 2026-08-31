@@ -1,0 +1,329 @@
+text,intent
+hello,greeting
+hi,greeting
+hey there,greeting
+good morning,greeting
+good afternoon,greeting
+good evening,greeting
+hey potential ai,greeting
+namaste,greeting
+hi chatbot,greeting
+hello college bot,greeting
+is anyone there,greeting
+greetings,greeting
+hi prpcem assistant,greeting
+hello assistant,greeting
+hey there how are you,greeting
+good day,greeting
+bye,goodbye
+goodbye,goodbye
+see you later,goodbye
+talk to you soon,goodbye
+catch you later,goodbye
+exit,goodbye
+quit,goodbye
+bye potential ai,goodbye
+have a good day,goodbye
+take care goodbye,goodbye
+see you soon,goodbye
+thanks,thanks
+thank you,thanks
+thank you so much,thanks
+thanks for the information,thanks
+thanks for your help,thanks
+appreciate your help,thanks
+that was helpful thank you,thanks
+many thanks,thanks
+thanks a lot,thanks
+thank you potential ai,thanks
+tell me about prpcem,college_information
+what is prpcem,college_information
+about pote college,college_information
+tell me about p r pote patil college of engineering,college_information
+information about prpcem amravati,college_information
+give me an overview of the college,college_information
+what kind of institute is prpcem,college_information
+tell me details about pote college of engineering and management,college_information
+what programs are provided at prpcem,college_information
+college profile and key features,college_information
+introduction to prpcem,college_information
+general information regarding pote college,college_information
+brief introduction about the institute,college_information
+what is the history of prpcem,history
+when was the college established,history
+how old is prpcem college,history
+establishment year of pote college,history
+background and foundation of prpcem,history
+origin of p r pote patil college,history
+when did pote college start,history
+founding year and history of prpcem,history
+past history and background of the college,history
+what is the vision and mission of the college,vision_mission
+what is the college vision,vision_mission
+tell me the mission of prpcem,vision_mission
+quality policy of prpcem,vision_mission
+what are the core values and mission statement,vision_mission
+college objectives and vision,vision_mission
+vision mission and quality goals,vision_mission
+aims and mission of pote college,vision_mission
+what departments are available,departments
+list all engineering departments,departments
+which departments does prpcem have,departments
+tell me about the branches in engineering,departments
+how many departments are in prpcem,departments
+show me the departments,departments
+what are the academic departments,departments
+all engineering branches at pote college,departments
+which departments are running in prpcem,departments
+branches offered in engineering,departments
+what courses are offered,courses
+which courses are available at prpcem,courses
+what can i study at prpcem,courses
+list of courses in pote college,courses
+tell me the available courses,courses
+what degree courses are offered,courses
+what specializations are offered,courses
+academic course list at prpcem,courses
+available courses for students,courses
+engineering courses offered here,courses
+what programs are available,programs
+tell me about b tech programs,programs
+does the college offer m tech,programs
+is mba available at prpcem,programs
+is mca course offered,programs
+what undergraduate and postgraduate programs exist,programs
+list of ug and pg degrees offered,programs
+postgraduate and undergraduate program list,programs
+bachelor and masters degree programs,programs
+phd and masters programs at prpcem,programs
+tell me about the faculty members,faculty
+who are the teachers at prpcem,faculty
+information about professors and teaching staff,faculty
+faculty qualifications at prpcem,faculty
+who teaches in the computer engineering department,faculty
+faculty details at pote college,faculty
+teaching staff and professors list,faculty
+experience of faculty members,faculty
+who is the hod of computer engineering,hod
+who is the head of computer science department,hod
+who is the hod of mechanical engineering,hod
+who is the hod of electrical engineering,hod
+who is the hod of civil engineering,hod
+who is the hod of extc department,hod
+who is the hod of ai and ds,hod
+who is the hod of cse aiml,hod
+who is the hod of first year,hod
+who is the hod of mba,hod
+who is the hod of mca,hod
+tell me the head of the department,hod
+who leads the computer engineering department,hod
+head of mechanical department,hod
+who is electrical hod,hod
+what is the admission process,admission
+how to take admission in prpcem,admission
+admission procedure for b tech,admission
+how can i apply for admission at prpcem,admission
+centralized admission process cap rounds details,admission
+what is the dte code for admission,admission
+how to get direct second year admission,admission
+how to join pote college amravati,admission
+steps for admission in engineering,admission
+counselling and cap round admission steps,admission
+what is the eligibility for b tech,eligibility
+eligibility criteria for engineering admission,eligibility
+what are the qualifications required for b tech,eligibility
+eligibility for direct second year engineering,eligibility
+m tech admission eligibility,eligibility
+what is the eligibility for mba and mca,eligibility
+mht cet marks required for admission,eligibility
+minimum percentage required for btech,eligibility
+am i eligible for admission,eligibility
+criteria for btech admission qualification,eligibility
+what documents are required for admission,documents
+list of documents needed for admission,documents
+which certificates do i need to submit during admission,documents
+document checklist for b tech admission,documents
+what documents are necessary for cap round verification,documents
+is caste validity certificate required,documents
+documents needed for scholarship and admission,documents
+certificates required at the time of admission,documents
+what paperwork is required for admission,documents
+what is the fee structure,fees
+how much are the college fees,fees
+what are the b tech fees per year,fees
+fee structure for engineering courses,fees
+what are the tuition fees at prpcem,fees
+annual fees of pote college,fees
+how much do i have to pay for b tech,fees
+yearly tuition fee and development fee,fees
+total fees for four years engineering,fees
+cost of studying btech at prpcem,fees
+what is the seat intake,intake
+how many seats are available in computer engineering,intake
+what is the intake capacity for b tech,intake
+total seats in cse and aiml,intake
+intake of mechanical and civil engineering,intake
+number of seats in electrical engineering,intake
+what is the intake of mba and mca,intake
+branch wise seat intake capacity,intake
+how many students are admitted in each branch,intake
+tell me about scholarships,scholarship
+is ebc scholarship available,scholarship
+government scholarships for engineering students,scholarship
+how to apply for mahadbt scholarship,scholarship
+what financial aid or fee concession is offered,scholarship
+scholarships for sc st obc students,scholarship
+tuition fee waiver scheme tfws details,scholarship
+financial concession for reserved category,scholarship
+how can i get fee concession scholarship,scholarship
+tell me about the library,library
+does the college have a library,library
+how many books are in the central library,library
+library timings and facilities,library
+is digital library or delnet available,library
+reading room facility in the library,library
+books and journals in the library,library
+central library collection and resources,library
+is hostel available,hostel
+tell me about the hostel facility,hostel
+are there separate hostels for boys and girls,hostel
+hostel amenities mess and food,hostel
+accommodation on campus for students,hostel
+what is the hostel fee and room facilities,hostel
+boys hostel and girls hostel details,hostel
+is residential facility provided for outside students,hostel
+what facilities are available at the college,facilities
+tell me about campus facilities and infrastructure,facilities
+is wifi available on campus,facilities
+sports facilities and gym at prpcem,facilities
+canteen and cafeteria facility,facilities
+college bus transport facility,facilities
+campus amenities and infrastructure,facilities
+infrastructure and campus amenities,facilities
+auditorium and seminar halls in college,facilities
+tell me about the laboratories,laboratories
+what labs are available in computer science,laboratories
+practical labs in engineering departments,laboratories
+are laboratories well equipped,laboratories
+workshop and cnc lab details,laboratories
+specialized research labs and equipment,laboratories
+hardware and software computing labs,laboratories
+show me the academic calendar,academic_calendar
+when do classes start,academic_calendar
+academic schedule for semester,academic_calendar
+dates for internal exams and mid sem tests,academic_calendar
+academic calendar for 2025 26,academic_calendar
+teaching days and holiday calendar,academic_calendar
+when is the semester start and end date,academic_calendar
+academic terms schedule and timeline,academic_calendar
+where can i find the syllabus,syllabus
+show me the curriculum and scheme,syllabus
+syllabus for autonomous b tech,syllabus
+download syllabus for computer engineering,syllabus
+autonomous course scheme 2026 27,syllabus
+where is the syllabus of electrical and extc,syllabus
+course curriculum and syllabus pdf,syllabus
+teaching scheme and examination scheme syllabus,syllabus
+tell me about examinations,examination
+how are autonomous exams conducted,examination
+when are end semester examinations held,examination
+how to fill online exam form,examination
+exam form portal link,examination
+backlog exam rules and timetable,examination
+end semester exam schedule and hall ticket,examination
+evaluation and grading examination system,examination
+what are the latest notices,notices
+show me recent college notices,notices
+any new announcements from dean academics,notices
+latest exam notifications,notices
+important updates and circulars,notices
+official notices board and announcements,notices
+new circulars from principal office,notices
+how can i contact the college,contact
+what is the college contact number,contact
+email address of prpcem,contact
+phone number of admission office,contact
+principal contact email,contact
+how to get in touch with prpcem,contact
+helpline phone numbers for enquiry,contact
+official email and phone for communication,contact
+where is the college located,location
+what is the address of prpcem,location
+how to reach pote college amravati,location
+location of p r pote patil college,location
+which road is prpcem on in amravati,location
+directions to prpcem campus,location
+postal address of pote college,location
+is prpcem autonomous,autonomy
+autonomy status of pote college,autonomy
+is the college affiliated to sgbau,autonomy
+what is the autonomous curriculum structure,autonomy
+ordinance and academic regulations of prpcem,autonomy
+autonomous status and university affiliation,autonomy
+academic rules under autonomous institute,autonomy
+what is the naac accreditation grade,accreditation
+is prpcem naac accredited,accreditation
+what is the naac grade of the college,accreditation
+is the institute approved by aicte,accreditation
+dte code and naac score of prpcem,accreditation
+accreditation and approval details,accreditation
+naac a grade certificate details,accreditation
+tell me about campus placements,placement
+which companies visit for campus placement,placement
+placement records and salary packages,placement
+training and placement cell activities,placement
+what companies recruit from pote college,placement
+tcs infosys wipro placement at prpcem,placement
+highest and average package in placement,placement
+training and placement cell tp cell,placement
+who is the principal,principal
+who is the principal of prpcem,principal
+who is the principal of the college,principal
+tell me the principal name,principal
+name of the principal,principal
+who heads prpcem as principal,principal
+who is our principal,principal
+principal of pote college,principal
+who is dr jawandhiya,principal
+who is dr p m jawandhiya,principal
+who is jawandhiya,principal
+principal contact details,principal
+tell me about the principal,principal
+who is the director or principal,principal
+who is the current principal,principal
+who is the chairman,chairman
+who is the founder,chairman
+who is the chairman of prpcem,chairman
+who is the founder chairman,chairman
+who founded prpcem,chairman
+who is the president of the trust,chairman
+who is pravinkumar pote,chairman
+who is pravin pote,chairman
+who is shri pravinkumar r pote patil,chairman
+founder and chairman name,chairman
+who is the vice chairman,chairman
+who is shreyash pote,chairman
+who is shri shreyash p pote,chairman
+tell me about the chairman,chairman
+who started the college,chairman
+who established pote college,chairman
+who is the dean,dean
+who is the dean of academics,dean
+dean of academics name,dean
+who is the academic dean,dean
+who is dr kute,dean
+who is dr v b kute,dean
+who heads the academic office as dean,dean
+dean academics contact,dean
+who is the dean of prpcem,dean
+who is the dean of academics at prpcem,dean
+tell me about the dean,dean
+who are the college leaders,leadership
+tell me about the leadership,leadership
+who manages the college,leadership
+board of trustees,leadership
+management of prpcem,leadership
+key administrators of prpcem,leadership
+who runs the college,leadership
+governing body of prpcem,leadership
+leadership team of pote college,leadership

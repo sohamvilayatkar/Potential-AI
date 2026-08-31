@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <div class="page-header">
+        <h1>📘 About POTENTIAL AI - Academic Mini-Project</h1>
+        <p>Comprehensive documentation of AI theory, intelligent agent structure, system architecture, syllabus mapping, and benefits & risks.</p>
+    </div>
+
+    <!-- SECTION 1: SYSTEM ARCHITECTURE FLOWCHART -->
+    <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-title">⚙️ AI Pipeline Architecture Flowchart</div>
+        <div style="background-color: #0f172a; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-family: monospace; font-size: 0.9rem; line-height: 1.8; color: #38bdf8; text-align: center;">
+            <div style="color: #fff; font-weight: bold;">USER QUERY</div>
+            <div>↓</div>
+            <div style="color: #cbd5e1;">[Step 1] Input Validation & Sanitization</div>
+            <div>↓</div>
+            <div style="color: #cbd5e1;">[Step 2] NLP Preprocessing (Tokenization, Lowercase, Punctuation Removal)</div>
+            <div>↓</div>
+            <div style="color: #cbd5e1;">[Step 3] TF-IDF Feature Vectorization (Unigram + Bigram N-Grams)</div>
+            <div>↓</div>
+            <div style="color: #f59e0b; font-weight: bold;">[Step 4] Machine Learning Intent Classifier (Logistic Regression) ➔ Intent + Confidence</div>
+            <div>↓</div>
+            <div style="color: #cbd5e1;">[Step 5] Named Entity Recognition (Department, Program, Info Type)</div>
+            <div>↓</div>
+            <div style="color: #a78bfa; font-weight: bold;">[Step 6] Experta Rule Engine (Symbolic Forward-Chaining Inference on Facts)</div>
+            <div>↙ &emsp; &emsp; ↘</div>
+            <div style="display: flex; justify-content: center; gap: 3rem;">
+                <div style="border: 1px dashed var(--accent-cyan); padding: 0.5rem 1rem; border-radius: 4px; color: var(--accent-cyan);">
+                    <strong>Structured Knowledge Base</strong><br>(JSON Facts & Attributes)
+                </div>
+                <div style="border: 1px dashed var(--accent-indigo); padding: 0.5rem 1rem; border-radius: 4px; color: var(--accent-indigo);">
+                    <strong>NetworkX Knowledge Graph</strong><br>(Semantic Entity Traversal)
+                </div>
+            </div>
+            <div>↘ &emsp; &emsp; ↙</div>
+            <div style="color: #34d399; font-weight: bold;">[Step 7] Response Generator & Academic Year Validator</div>
+            <div>↓</div>
+            <div style="color: #cbd5e1;">[Step 8] Official Source Attribution (Authoritative PRPCEM URLs)</div>
+            <div>↓</div>
+            <div style="color: #fff; font-weight: bold;">DELIVERED TO USER & LOGGED TO SQLITE ANALYTICS</div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: INTELLIGENT AGENT MAPPING (PEAS) -->
+    <!-- <div class="grid-2">
+        <div class="card">
+            <div class="card-title">🤖 Intelligent Agent Specification (PEAS Framework)</div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.75rem;">
+                In AI theory (Unit 1), an agent is an entity that perceives its environment through sensors and acts upon that environment through actuators.
+            </p>
+            <ul style="margin-left: 1.25rem; font-size: 0.9rem; line-height: 1.8;">
+                <li><strong>Performance Measure (P):</strong> Accuracy of factual college information, relevance of intent classification, latency (&lt;100ms), absence of hallucinations, source precision.</li>
+                <li><strong>Environment (E):</strong> Student, faculty, and visitor chat interaction on the web; official PRPCEM knowledge base.</li>
+                <li><strong>Actuators (A):</strong> Synthesized text response, clickable source links, UI suggested chips, and analytics telemetry.</li>
+                <li><strong>Sensors (S):</strong> HTTP POST request payload, user input text strings, conversation session context.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🧠 Agent Environment Characteristics</div>
+            <ul style="margin-left: 1.25rem; font-size: 0.9rem; line-height: 1.8;">
+                <li><strong>Partially Observable:</strong> User intent must be inferred statistically from input text tokens.</li>
+                <li><strong>Deterministic:</strong> Consistent questions yield repeatable, fact-based college answers from the local knowledge base.</li>
+                <li><strong>Sequential:</strong> User dialogs follow interactive inquiry turns.</li>
+                <li><strong>Static:</strong> College knowledge base does not mutate unexpectedly during a single request turn.</li>
+                <li><strong>Discrete:</strong> Distinct intents, department categories, and rule sets.</li>
+                <li><strong>Single-Agent:</strong> Potential AI operates as the autonomous reasoning agent.</li>
+            </ul>
+        </div>
+    </div> -->
+
+    <!-- SECTION 3: TURING TEST & SYLLABUS CONCEPTS -->
+    <!-- <div class="grid-2">
+        <div class="card">
+            <div class="card-title">🧪 The Turing Test (Unit 1 AI Concept)</div>
+            <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.7;">
+                Proposed by Alan Turing in 1950 (the "Imitation Game"), the <strong>Turing Test</strong> evaluates whether a machine can exhibit intelligent behavior indistinguishable from a human.
+            </p>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">
+                <strong>Academic Clarification:</strong> Potential AI is a <em>task-oriented intelligent assistant</em> rather than an Artificial General Intelligence (AGI) designed to pass the unrestricted Turing Test. It excels in deterministic, factually accurate reasoning using Expert Systems, Machine Learning, and Knowledge Graphs without fabricating responses.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">⚖️ Benefits and Risks of AI (Unit 6)</div>
+            <p style="font-weight: 600; color: var(--accent-emerald);">Key Benefits:</p>
+            <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.75rem;">
+                <li>24/7 instant accessibility for prospective students and parents.</li>
+                <li>Reduction in administrative staff workload for repetitive FAQs.</li>
+                <li>Zero external API dependency (100% offline-capable local intelligence).</li>
+            </ul>
+            <p style="font-weight: 600; color: var(--accent-rose);">Risks & Mitigations:</p>
+            <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: #cbd5e1;">
+                <li><strong>Risk:</strong> Hallucination / Outdated facts ➔ <em>Mitigated by strict knowledge base grounding and confidence threshold fallbacks.</em></li>
+                <li><strong>Risk:</strong> Over-reliance ➔ <em>Chatbot provides direct official links for final administrative verification.</em></li>
+            </ul>
+        </div>
+    </div> -->
+
+    <!-- SECTION 4: COURSE OUTCOME MAPPING -->
+    <!-- <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-title">🎯 Course Outcome (CO) Mapping</div>
+        <div style="overflow-x: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Course Outcome</th>
+                        <th>Syllabus Unit</th>
+                        <th>Demonstration in POTENTIAL AI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CO1</strong></td>
+                        <td>Unit 1 – Intro to AI & Agents</td>
+                        <td>Autonomous agent architecture, PEAS model, and Turing Test foundation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO2</strong></td>
+                        <td>Unit 2 – Python for AI</td>
+                        <td>NumPy, Pandas, Matplotlib, NetworkX, Experta, and scikit-learn integration.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO3</strong></td>
+                        <td>Unit 3 – Problem Solving & Search</td>
+                        <td>BFS, DFS, Uniform Cost Search, Water Jug problem, Missionaries & Cannibals solver.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO4</strong></td>
+                        <td>Unit 4 – Informed & Local Search</td>
+                        <td>A* Search, Greedy Best-First Search, Hill Climbing, and Genetic Algorithm.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO5</strong></td>
+                        <td>Unit 5 – Game Playing</td>
+                        <td>Minimax and Alpha-Beta Pruning game engine for Tic-Tac-Toe.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CO6</strong></td>
+                        <td>Unit 6 – Real-World AI Applications</td>
+                        <td>End-to-end college chatbot assistant, SQLite telemetry, and analytics dashboard.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+</div>
+{% endblock %}

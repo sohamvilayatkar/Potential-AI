@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-container">
+    <div class="page-header">
+        <h1>🧪 Artificial Intelligence Algorithm Laboratory</h1>
+        <p>Interactive demonstrations of search algorithms, heuristic optimization, game playing, and classic AI state-space problems from the AI syllabus.</p>
+    </div>
+
+    <!-- AI Lab Tabs -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchLabTab(event, 'lab-search')">🔍 1. Search Algorithms (BFS, DFS, UCS, A*, Greedy)</button>
+        <button class="tab-btn" onclick="switchLabTab(event, 'lab-game')">🎮 2. Game Playing (Minimax & Alpha-Beta)</button>
+        <button class="tab-btn" onclick="switchLabTab(event, 'lab-classic')">🏺 3. Classic AI (Water Jug & Missionaries)</button>
+        <button class="tab-btn" onclick="switchLabTab(event, 'lab-opt')">📈 4. Optimization (Hill Climbing & Genetic)</button>
+    </div>
+
+    <!-- SECTION 1: SEARCH ALGORITHMS -->
+    <div id="lab-search" class="tab-pane active">
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-title">🌐 Graph Search Algorithm Simulator</div>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
+                Explore how uninformed and heuristic search algorithms navigate state spaces to reach a goal.
+            </p>
+
+            <div class="lab-control-panel">
+                <div class="form-group">
+                    <label>Select Algorithm:</label>
+                    <select id="searchAlgoSelect" class="form-control">
+                        <option value="bfs">Breadth-First Search (BFS)</option>
+                        <option value="dfs">Depth-First Search (DFS)</option>
+                        <option value="ucs">Uniform Cost Search (UCS)</option>
+                        <option value="astar">A* Heuristic Search (f = g + h)</option>
+                        <option value="greedy">Greedy Best-First Search (f = h)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Start Node:</label>
+                    <select id="searchStartSelect" class="form-control">
+                        <option value="A">Node A (Root)</option>
+                        <option value="B">Node B</option>
+                        <option value="C">Node C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Goal Node:</label>
+                    <select id="searchGoalSelect" class="form-control">
+                        <option value="Goal">Goal Node</option>
+                    </select>
+                </div>
+                <button class="btn-primary" style="margin-top: 1.1rem;" onclick="runSearchAlgorithm()">
+                    ▶ Run Algorithm
+                </button>
+            </div>
+
+            <!-- Output Box -->
+            <div id="searchResultBox" class="results-box">
+                <div style="color: #94a3b8;">Select an algorithm above and click "Run Algorithm" to inspect step-by-step exploration.</div>
+            </div>
+        </div>
+
+        <!-- Complexity Comparison Table -->
+        <div class="card">
+            <div class="card-title">📊 Syllabus Search Algorithm Comparison</div>
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Time Complexity</th>
+                            <th>Space Complexity</th>
+                            <th>Complete?</th>
+                            <th>Optimal?</th>
+                            <th>Evaluation / Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BFS</strong></td>
+                            <td>O(b<sup>d</sup>)</td>
+                            <td>O(b<sup>d</sup>)</td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span></td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span> (uniform cost)</td>
+                            <td>FIFO Queue (Level-by-level)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DFS</strong></td>
+                            <td>O(b<sup>m</sup>)</td>
+                            <td>O(b·m)</td>
+                            <td><span style="color: var(--accent-rose);">No</span> (cyclic graphs)</td>
+                            <td><span style="color: var(--accent-rose);">No</span></td>
+                            <td>LIFO Stack (Deepest branch first)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UCS</strong></td>
+                            <td>O(b<sup>1 + ⌊C*/ε⌋</sup>)</td>
+                            <td>O(b<sup>1 + ⌊C*/ε⌋</sup>)</td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span> (step ≥ ε &gt; 0)</td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span> (Lowest path cost)</td>
+                            <td>Priority Queue by g(n)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A* Search</strong></td>
+                            <td>O(b<sup>d</sup>)</td>
+                            <td>O(b<sup>d</sup>)</td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span></td>
+                            <td><span style="color: var(--accent-emerald);">Yes</span> (admissible h)</td>
+                            <td>f(n) = g(n) + h(n)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Greedy Search</strong></td>
+                            <td>O(b<sup>m</sup>)</td>
+                            <td>O(b<sup>m</sup>)</td>
+                            <td><span style="color: var(--accent-rose);">No</span></td>
+                            <td><span style="color: var(--accent-rose);">No</span></td>
+                            <td>f(n) = h(n)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: GAME PLAYING (TIC-TAC-TOE MINIMAX VS ALPHA-BETA) -->
+    <div id="lab-game" class="tab-pane">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">🎮 Tic-Tac-Toe AI Engine</div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Play as <strong>X</strong> against the unbeatable AI <strong>O</strong>.
+                </p>
+
+                <div class="lab-control-panel" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label>AI Algorithm:</label>
+                        <select id="gameAlgoSelect" class="form-control">
+                            <option value="alphabeta">Alpha-Beta Pruning (Optimal & Fast)</option>
+                            <option value="minimax">Full Minimax (Exhaustive Game Tree)</option>
+                        </select>
+                    </div>
+                    <button class="btn-clear" onclick="resetTTTGame()" style="margin-top: 1.1rem;">
+                        🔄 Reset Game
+                    </button>
+                </div>
+
+                <div class="ttt-container">
+                    <div id="tttBoard" class="ttt-board">
+                        <div class="ttt-cell" data-idx="0" onclick="handleTTTCellClick(0)"></div>
+                        <div class="ttt-cell" data-idx="1" onclick="handleTTTCellClick(1)"></div>
+                        <div class="ttt-cell" data-idx="2" onclick="handleTTTCellClick(2)"></div>
+                        <div class="ttt-cell" data-idx="3" onclick="handleTTTCellClick(3)"></div>
+                        <div class="ttt-cell" data-idx="4" onclick="handleTTTCellClick(4)"></div>
+                        <div class="ttt-cell" data-idx="5" onclick="handleTTTCellClick(5)"></div>
+                        <div class="ttt-cell" data-idx="6" onclick="handleTTTCellClick(6)"></div>
+                        <div class="ttt-cell" data-idx="7" onclick="handleTTTCellClick(7)"></div>
+                        <div class="ttt-cell" data-idx="8" onclick="handleTTTCellClick(8)"></div>
+                    </div>
+                    <div id="tttStatus" style="font-weight: 600; color: var(--text-accent);">Your turn! Click any cell to place X.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📊 Game Tree Evaluation Metrics</div>
+                <div id="gameMetricsBox" class="results-box" style="height: 380px;">
+                    <div><strong>Minimax vs Alpha-Beta Comparison:</strong></div>
+                    <p style="color: #94a3b8; margin-top: 0.5rem;">
+                        Make a move on the board to see real-time node evaluations, alpha-beta cutoffs, and tree pruning efficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: CLASSIC AI STATE-SPACE PROBLEMS -->
+    <div id="lab-classic" class="tab-pane">
+        <div class="grid-2">
+            <!-- Water Jug Problem -->
+            <div class="card">
+                <div class="card-title">🏺 Water Jug Problem Solver</div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    State-space search using BFS transitions: Fill, Empty, and Pour between Jugs.
+                </p>
+
+                <div class="lab-control-panel" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label>Jug A Capacity (L):</label>
+                        <input type="number" id="jugACap" class="form-control" value="4" min="1" max="20" style="width: 90px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Jug B Capacity (L):</label>
+                        <input type="number" id="jugBCap" class="form-control" value="3" min="1" max="20" style="width: 90px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Target Amount (L):</label>
+                        <input type="number" id="jugTarget" class="form-control" value="2" min="1" max="20" style="width: 90px;" />
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1.1rem;" onclick="solveWaterJugProblem()">
+                        ▶ Solve Jugs
+                    </button>
+                </div>
+
+                <div id="waterJugResult" class="results-box">
+                    <div style="color: #94a3b8;">Click "Solve Jugs" to generate state-space BFS transitions.</div>
+                </div>
+            </div>
+
+            <!-- Missionaries and Cannibals -->
+            <div class="card">
+                <div class="card-title">🛶 Missionaries and Cannibals Problem</div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Safely navigate river crossing where Cannibals must never outnumber Missionaries.
+                </p>
+
+                <div class="lab-control-panel" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label>Missionaries:</label>
+                        <input type="number" id="mcMiss" class="form-control" value="3" min="1" max="5" style="width: 80px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Cannibals:</label>
+                        <input type="number" id="mcCann" class="form-control" value="3" min="1" max="5" style="width: 80px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Boat Capacity:</label>
+                        <input type="number" id="mcBoat" class="form-control" value="2" min="2" max="3" style="width: 80px;" />
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1.1rem;" onclick="solveMissionariesCannibalsProblem()">
+                        ▶ Solve Crossing
+                    </button>
+                </div>
+
+                <div id="mcResult" class="results-box">
+                    <div style="color: #94a3b8;">Click "Solve Crossing" to compute the safe sequence of boat trips.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: OPTIMIZATION (HILL CLIMBING & GENETIC ALGORITHM) -->
+    <div id="lab-opt" class="tab-pane">
+        <div class="grid-2">
+            <!-- Hill Climbing -->
+            <div class="card">
+                <div class="card-title">⛰️ Hill Climbing Optimization</div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Maximizing objective function: <code>f(x) = -(x-4)^2 + 25 + 3*sin(2*x)</code>.
+                </p>
+
+                <div class="lab-control-panel" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label>Starting X:</label>
+                        <input type="number" id="hcStartX" class="form-control" value="0.0" step="0.5" style="width: 90px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Step Size (Δx):</label>
+                        <input type="number" id="hcStep" class="form-control" value="0.25" step="0.05" style="width: 90px;" />
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1.1rem;" onclick="runHillClimbing()">
+                        ▶ Climb Hill
+                    </button>
+                </div>
+
+                <div id="hcResultBox" class="results-box">
+                    <div style="color: #94a3b8;">Click "Climb Hill" to trace neighbor steps and local peak convergence.</div>
+                </div>
+            </div>
+
+            <!-- Genetic Algorithm -->
+            <div class="card">
+                <div class="card-title">🧬 Genetic Algorithm Optimization</div>
+                <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Evolutionary optimization: Selection, Crossover, and Mutation on binary chromosomes.
+                </p>
+
+                <div class="lab-control-panel" style="margin-top: 1rem;">
+                    <div class="form-group">
+                        <label>Population Size:</label>
+                        <input type="number" id="gaPop" class="form-control" value="10" min="4" max="30" style="width: 90px;" />
+                    </div>
+                    <div class="form-group">
+                        <label>Generations:</label>
+                        <input type="number" id="gaGen" class="form-control" value="15" min="5" max="50" style="width: 90px;" />
+                    </div>
+                    <button class="btn-primary" style="margin-top: 1.1rem;" onclick="runGeneticAlgorithm()">
+                        ▶ Run Evolution
+                    </button>
+                </div>
+
+                <div id="gaResultBox" class="results-box">
+                    <div style="color: #94a3b8;">Click "Run Evolution" to generate generational fitness progression.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/ai_lab.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="chat-title-group">
+            <h2>POTENTIAL AI Chatbot</h2>
+            <p>P. R. Pote Patil College of Engineering & Management, Amravati</p>
+        </div>
+        <button id="clearChatBtn" class="btn-clear" title="Reset Conversation">
+            🗑️ Clear Chat
+        </button>
+    </div>
+
+    <!-- Chat Messages Container -->
+    <div id="chatMessages" class="chat-messages">
+        <!-- Initial Welcome Message from Bot -->
+        <div class="message bot">
+            <div class="avatar bot-avatar">Ψ</div>
+            <div class="message-bubble">
+                <p><strong>Hello! I'm Potential AI</strong>, your intelligent college assistant for <strong>P. R. Pote Patil College of Engineering & Management (PRPCEM), Amravati</strong>.</p>
+                <p style="margin-top: 0.5rem;">I can assist you with official information on:</p>
+                <ul>
+                    <li><strong>Courses & Degree Programs:</strong> B.Tech, M.Tech, MBA, MCA</li>
+                    <li><strong>Departments & HODs:</strong> CSE, AIML, AI&DS, EXTC, EE, ME, CE</li>
+                    <li><strong>Admissions & Eligibility:</strong> CAP rounds, DTE Code 1107, required documents</li>
+                    <li><strong>Fees & Scholarships:</strong> FRA fees, MahaDBT, EBC, TFWS concessions</li>
+                    <li><strong>Campus Facilities:</strong> Central Library, Hostels, Computer Centers, Sports</li>
+                    <li><strong>Academics:</strong> Autonomous ordinance, syllabus schemes, examination notices</li>
+                </ul>
+                <div class="timestamp">Just now</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggested Quick Prompts -->
+    <div class="suggested-container">
+        <div class="suggested-label">💡 Suggested Questions:</div>
+        <div class="prompt-chips">
+            <button class="chip" onclick="sendPrompt('Which courses are offered?')">Which courses are offered?</button>
+            <button class="chip" onclick="sendPrompt('What departments are available?')">What departments are available?</button>
+            <button class="chip" onclick="sendPrompt('Who is the HOD of Computer Engineering?')">Who is the HOD of Computer Engineering?</button>
+            <button class="chip" onclick="sendPrompt('What is the admission process?')">What is the admission process?</button>
+            <button class="chip" onclick="sendPrompt('What documents are required for admission?')">What documents are required for admission?</button>
+            <button class="chip" onclick="sendPrompt('What facilities are available?')">What facilities are available?</button>
+            <button class="chip" onclick="sendPrompt('Tell me about scholarships')">Tell me about scholarships</button>
+            <button class="chip" onclick="sendPrompt('What is the college contact information?')">What is the college contact information?</button>
+        </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <div class="chat-input-container">
+        <form id="chatForm" class="chat-form" onsubmit="handleChatSubmit(event)">
+            <input 
+                type="text" 
+                id="userInput" 
+                class="chat-input" 
+                placeholder="Ask Potential AI anything about PRPCEM..." 
+                autocomplete="off"
+                required
+            />
+            <button type="submit" id="sendBtn" class="btn-send">
+                <span>Send</span> ➔
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}
