@@ -55,7 +55,7 @@
       "name": "Computer Science and Engineering (Artificial Intelligence & Machine Learning)",
       "short_name": "CSE (AI & ML)",
       "hod": "Dr. Zeeshan I. Khan",
-      "intake_btech": 60,
+      "intake_btech": 180,
       "established": 2021,
       "description": "Specialized B.Tech program focused on Deep Learning, Natural Language Processing, Computer Vision, Neural Networks, and intelligent systems development.",
       "laboratories": [
@@ -73,7 +73,7 @@
       "name": "Artificial Intelligence and Data Science",
       "short_name": "AI & DS",
       "hod": "Dr. Ajay B. Gadicha",
-      "intake_btech": 60,
+      "intake_btech": 180,
       "established": 2021,
       "description": "Dedicated department focusing on Big Data Analytics, Statistical Machine Learning, Data Mining, Predictive Modeling, and Business Intelligence.",
       "laboratories": [
@@ -90,7 +90,7 @@
       "name": "Electronics and Telecommunication Engineering",
       "short_name": "EXTC",
       "hod": "Dr. Umesh W. Hore",
-      "intake_btech": 60,
+      "intake_btech": 120,
       "intake_mtech": 18,
       "established": 2009,
       "description": "Covers Embedded Systems, VLSI Design, Wireless Communications, Signal Processing, and IoT systems with modern spectrum analyzers and simulation software.",

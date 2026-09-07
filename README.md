@@ -16,6 +16,7 @@ Unlike commercial chatbots that rely on paid external LLM APIs (such as OpenAI, 
 * **Experta Symbolic Rule Engine** for forward-chaining rule-based logical inference.
 * **NetworkX Knowledge Graph** for semantic graph modeling and relationship traversal.
 * **Classical AI Search & Optimization Algorithms** (BFS, DFS, UCS, A*, Greedy, Hill Climbing, Genetic Algorithm, Minimax, and Alpha-Beta Pruning).
+* **Voice Interaction & Accessibility:** Native client-side Speech-to-Text (STT via Web Speech API) and Text-to-Speech (TTS with auto-speak and read-aloud controls) without any paid API keys or audio latency.
 * **Strict Fact Grounding & Source Attribution** referencing authoritative PRPCEM official web portals (`https://prpotepatilengg.ac.in/` and `https://academics.prpotepatilengg.ac.in/`).
 
 ---
@@ -280,8 +281,43 @@ If official college information changes (e.g., new academic year notices or fees
 
 ---
 
+## 🤖 Telegram Bot Integration & Flying Button
+
+Potential AI includes full Telegram bot support, allowing students and visitors to chat with the AI assistant directly via Telegram:
+
+### 1. Telegram Bot Features
+* **Zero External LLMs:** Powered by the exact same local inference pipeline (NLP, TF-IDF, Logistic Regression, Experta, NetworkX).
+* **Official Source Attribution:** Automatically attaches official PRPCEM links to Telegram replies.
+* **Dual Operation Modes:**
+  * **Webhook Mode (`POST /api/telegram/webhook`):** Production-ready endpoint for cloud hosting with HTTPS.
+  * **Standalone Polling (`python platforms/telegram_bot.py`):** For local testing without needing a public domain.
+* **Floating Web Button:** A floating action button (FAB) with levitation animation and pulse aura appears on all web pages, linking directly to the bot (`https://t.me/PRPCEM_PotentialAI_Bot`).
+
+### 2. Configuration & Running Telegram Bot
+1. Get a bot token from [@BotFather](https://t.me/BotFather) on Telegram.
+2. Set environment variables:
+   ```bash
+   # Windows (CMD / PowerShell)
+   set TELEGRAM_BOT_TOKEN=your_bot_token_here
+   set TELEGRAM_BOT_USERNAME=PRPCEM_PotentialAI_Bot
+
+   # Linux / macOS
+   export TELEGRAM_BOT_TOKEN="your_bot_token_here"
+   export TELEGRAM_BOT_USERNAME="PRPCEM_PotentialAI_Bot"
+   ```
+3. Run the standalone bot runner:
+   ```bash
+   python platforms/telegram_bot.py
+   ```
+4. Or set up the Webhook for production:
+   ```bash
+   curl -F "url=https://your-domain.com/api/telegram/webhook" https://api.telegram.org/bot<YOUR_TOKEN>/setWebhook
+   ```
+
+---
+
 ## 🧪 Running the Test Suite
-To run all 26 automated unit and integration tests:
+To run all 45 automated unit and integration tests:
 ```bash
 pytest tests/ -v
 ```

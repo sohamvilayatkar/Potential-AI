@@ -7,9 +7,18 @@
             <h2>POTENTIAL AI Chatbot</h2>
             <p>P. R. Pote Patil College of Engineering & Management, Amravati</p>
         </div>
-        <button id="clearChatBtn" class="btn-clear" title="Reset Conversation">
-            🗑️ Clear Chat
-        </button>
+        <div class="chat-actions-group">
+            <button id="voiceAutoSpeakBtn" class="btn-voice-toggle" title="Toggle Auto-Speak for AI responses (Text-to-Speech)">
+                <span id="voiceIcon">🔇</span>
+                <span id="voiceStatusText">Auto-Speak: <strong>OFF</strong></span>
+            </button>
+            <button id="stopAllSpeechBtn" class="btn-voice-stop hidden" onclick="stopAllSpeech()" title="Stop Audio Playback">
+                ⏹️ Stop Audio
+            </button>
+            <button id="clearChatBtn" class="btn-clear" title="Reset Conversation">
+                🗑️ Clear Chat
+            </button>
+        </div>
     </div>
 
     <!-- Chat Messages Container -->
@@ -28,7 +37,13 @@
                     <li><strong>Campus Facilities:</strong> Central Library, Hostels, Computer Centers, Sports</li>
                     <li><strong>Academics:</strong> Autonomous ordinance, syllabus schemes, examination notices</li>
                 </ul>
-                <div class="timestamp">Just now</div>
+                <div class="message-footer">
+                    <button type="button" class="btn-speak" title="Read message aloud" onclick="toggleSpeakMessage(this)">
+                        <span class="speak-icon">🔊</span>
+                        <span class="speak-text">Listen</span>
+                    </button>
+                    <div class="timestamp">Just now</div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,6 +55,8 @@
             <button class="chip" onclick="sendPrompt('Which courses are offered?')">Which courses are offered?</button>
             <button class="chip" onclick="sendPrompt('What departments are available?')">What departments are available?</button>
             <button class="chip" onclick="sendPrompt('Who is the HOD of Computer Engineering?')">Who is the HOD of Computer Engineering?</button>
+            <button class="chip" onclick="sendPrompt('Who is the principal?')">Who is the principal?</button>
+            <button class="chip" onclick="sendPrompt('Who is the chairman?')">Who is the chairman?</button>
             <button class="chip" onclick="sendPrompt('What is the admission process?')">What is the admission process?</button>
             <button class="chip" onclick="sendPrompt('What documents are required for admission?')">What documents are required for admission?</button>
             <button class="chip" onclick="sendPrompt('What facilities are available?')">What facilities are available?</button>
@@ -48,17 +65,34 @@
         </div>
     </div>
 
+    <!-- Live Voice Recognition Status Banner -->
+    <div id="voiceStatusBanner" class="voice-status-banner hidden">
+        <div class="voice-status-content">
+            <span class="voice-pulse-ring"></span>
+            <span id="voiceStatusMessage">Listening... Speak now into your microphone</span>
+        </div>
+        <button type="button" class="btn-cancel-voice" onclick="cancelVoiceRecognition()" title="Cancel voice input">✕</button>
+    </div>
+
     <!-- Chat Input Area -->
     <div class="chat-input-container">
         <form id="chatForm" class="chat-form" onsubmit="handleChatSubmit(event)">
-            <input 
-                type="text" 
-                id="userInput" 
-                class="chat-input" 
-                placeholder="Ask Potential AI anything about PRPCEM..." 
-                autocomplete="off"
-                required
-            />
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    class="chat-input" 
+                    placeholder="Ask Potential AI anything about PRPCEM (or tap mic to speak)..." 
+                    autocomplete="off"
+                    required
+                />
+                <button type="button" id="micBtn" class="btn-mic" title="Click to speak (Speech-to-Text)" aria-label="Microphone Voice Input" onclick="toggleVoiceInput()">
+                    <svg class="mic-svg" viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                        <path fill="currentColor" d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                    </svg>
+                </button>
+            </div>
             <button type="submit" id="sendBtn" class="btn-send">
                 <span>Send</span> ➔
             </button>

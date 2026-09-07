@@ -32,3 +32,7 @@ class Config:
     COLLEGE_NAME = "P. R. Pote Patil College of Engineering & Management, Amravati"
     BOT_NAME = "Potential AI"
     TAGLINE = "Intelligent College Assistant"
+
+    # Telegram Bot Integration
+    TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "8630475971:AAGeWCoEhCQc3SxRKzN8pNSUTkp2n8bUgTs")
+    TELEGRAM_BOT_USERNAME = os.environ.get("TELEGRAM_BOT_USERNAME", "PRPCEM_PotentialAI_Bot")

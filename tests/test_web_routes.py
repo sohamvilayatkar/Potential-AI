@@ -59,3 +59,12 @@ def test_dashboard_api(client):
     data = res.get_json()
     assert 'summary' in data
     assert 'chart_base64' in data
+
+def test_voice_chat_elements(client):
+    res = client.get('/')
+    assert res.status_code == 200
+    html = res.get_data(as_text=True)
+    assert 'voiceAutoSpeakBtn' in html
+    assert 'micBtn' in html
+    assert 'voiceStatusBanner' in html
+    assert 'btn-speak' in html

@@ -22,6 +22,8 @@ from database import (
 from ai.response import get_response_generator
 from ai.knowledge_graph import get_knowledge_graph
 from ai.chatbot import get_chatbot_service
+from platforms.telegram_service import handle_telegram_update
+from platforms.telegram_bot import start_telegram_bot_background
 from algorithms import (
     breadth_first_search, depth_first_search, uniform_cost_search,
     astar_search, greedy_best_first_search, hill_climbing_optimization,
@@ -37,6 +39,18 @@ init_db()
 response_generator = get_response_generator()
 knowledge_graph = get_knowledge_graph()
 chatbot_service = get_chatbot_service()
+
+# Automatically launch Telegram Bot background listener
+if os.environ.get("WERKZEUG_RUN_MAIN") in ["true", None] or not Config.DEBUG:
+    start_telegram_bot_background()
+
+@app.context_processor
+def inject_global_template_context():
+    return {
+        "telegram_bot_username": Config.TELEGRAM_BOT_USERNAME,
+        "college_name": Config.COLLEGE_NAME,
+        "bot_name": Config.BOT_NAME
+    }
 
 # ==========================================
 #               WEB ROUTES
@@ -240,6 +254,39 @@ def api_dashboard_data():
         }), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+# ==========================================
+#          TELEGRAM BOT INTEGRATION
+# ==========================================
+
+@app.route("/api/telegram/webhook", methods=["POST"])
+def telegram_webhook():
+    """
+    Telegram Bot Webhook endpoint.
+    Receives JSON updates from Telegram and replies using Potential AI inference engine.
+    """
+    try:
+        update = request.get_json(force=True, silent=True)
+        if not update:
+            return jsonify({"ok": False, "error": "Invalid JSON payload"}), 400
+
+        result = handle_telegram_update(update)
+        return jsonify(result), 200
+    except Exception as e:
+        print(f"[Telegram Webhook Error] {e}")
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+@app.route("/api/telegram/status", methods=["GET"])
+def telegram_status():
+    """
+    Returns Telegram bot configuration and status.
+    """
+    return jsonify({
+        "configured": bool(Config.TELEGRAM_BOT_TOKEN),
+        "bot_username": Config.TELEGRAM_BOT_USERNAME,
+        "bot_link": f"https://t.me/{Config.TELEGRAM_BOT_USERNAME}",
+        "webhook_url": f"{request.host_url.rstrip('/')}/api/telegram/webhook"
+    }), 200
 
 # ==========================================
 #               ERROR HANDLERS
